@@ -21,7 +21,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 		getOneUser: function(id){
 			dispatch({
 				type: 'GET_ONE_USER',
-				payload: axios.get('/user.json')
+				payload: axios.get('/user.json'),
+				id: id
 			});
 		}
 	}
