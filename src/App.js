@@ -3,6 +3,7 @@ import { Route, Router } from 'react-router-dom';
 import { Provider } from "react-redux";
 import store from "./containers/store";
 import createBrowserHistory from 'history/createBrowserHistory';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import MainContainer from './containers/MainContainer';
 
@@ -13,7 +14,9 @@ class App extends Component {
     return (
         <Provider store={store}>
           <Router history={customHistory}>
-            <Route exact path="/" component={MainContainer} />
+          	<MuiThemeProvider>
+            	<Route path="/" component={MainContainer} />
+            </MuiThemeProvider>
           </Router>
         </Provider>
     );
