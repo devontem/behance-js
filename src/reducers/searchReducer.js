@@ -1,8 +1,9 @@
+const initialState = {
+	users: []
+};
 let message;
 
-const search = (state = {}, action) => {
-	console.log('action', action);
-	window.data = action.payload ? action.payload.data : [];
+const search = (state = initialState, action) => {
 	switch (action.type) {
 		case 'SEARCH_USERS':
 			return state;
