@@ -1,8 +1,9 @@
 let message;
+const initalState = {
+	user: null
+};
 
-const user = (state = {}, action) => {
-	console.log('action', action);
-	window.data = action.payload ? action.payload.data : [];
+const user = (state = initalState, action) => {
 	switch (action.type) {
 		case 'GET_ONE_USER':
 			return state;
