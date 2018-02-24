@@ -1,20 +1,37 @@
 import React, {Component} from 'react';
-import TextField from 'material-ui/TextField';
-import Card from 'material-ui/Card';
-import Subheader from 'material-ui/Subheader';
-import RaisedButton from 'material-ui/RaisedButton';
-import CircularProgress from 'material-ui/CircularProgress';
+import AppBar from 'material-ui/AppBar';
 
 import Search from './Search';
 import UserPage from './UserPage';
+
+const styles = {
+	root: {
+		margin: '20px auto',
+		maxWidth: '700px',
+		padding: '10px'
+	},
+	center: {
+		textAlign: 'center'
+	}
+};
+const app_name = 'behance-js';
 
 class Main extends Component {
 	render(){
 		return (
 			<div>
-				<h1>Main</h1>
-				<Search {...this.props} />
-				<UserPage {...this.props} />
+				<AppBar
+					title={app_name}
+				/>
+				<div style={styles.root}>
+					<Search {...this.props} />
+
+					{ (this.props.user.error) ?
+						(<p style={styles.center}>{this.props.user.errorMessage}</p>) : '' }
+
+					{ (this.props.user.user) ?
+						<UserPage {...this.props} /> : '' }
+				</div>
 			</div>
 		);
 	}
