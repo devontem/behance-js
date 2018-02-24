@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Card, CardHeader, CardText} from 'material-ui/Card';
+import PropTypes from 'prop-types';
 
 const styles = {
 	bold: {
@@ -8,13 +9,8 @@ const styles = {
 };
 
 class UserPage extends Component {
-	searchUsers(){
-		let search = this.refs.search.value;
-		this.props.searchUsers(search);
-	}
-
 	render(){
-		const { user } = this.props.user;
+		const { user } = this.props;
 		return (
 			<Card>
 				<CardHeader
@@ -39,6 +35,18 @@ class UserPage extends Component {
 			</Card>
 		);
 	}
-}
+};
+
+UserPage.propTypes = {
+	user: PropTypes.shape({
+		username: PropTypes.string.isRequired,
+		occupation: PropTypes.string.isRequired,
+		images: PropTypes.object.isRequired,
+		fields: PropTypes.array.isRequired,
+		sections: PropTypes.shape({
+			'Where, When and What': PropTypes.string.isRequired
+		}).isRequired
+	})
+};
 
 export default UserPage;
