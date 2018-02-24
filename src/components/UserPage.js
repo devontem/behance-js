@@ -28,6 +28,13 @@ class UserPage extends Component {
 						<p>{ (user.fields || []).join(', ') }</p>
 					</div>
 					<div>
+						<h3 style={styles.bold}>Experience</h3>
+						<ul>{ (user.links || []).map((item, i)=>{
+								return (<li key={i}><a target="_blank" href={item.url}>{item.title}</a></li>);
+							})}
+						</ul>
+					</div>
+					<div>
 						<h3 style={styles.bold}>Where, When and What</h3>
 						<p>{(user.sections || {})['Where, When and What']}</p>
 					</div>
@@ -45,7 +52,8 @@ UserPage.propTypes = {
 		fields: PropTypes.array.isRequired,
 		sections: PropTypes.shape({
 			'Where, When and What': PropTypes.string.isRequired
-		}).isRequired
+		}).isRequired,
+		links: PropTypes.array.isRequired
 	})
 };
 
