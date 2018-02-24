@@ -1,11 +1,12 @@
-# [App Name]
+# behance-js
+- Look up and view basic information about Behance users
+- Built with React & Redux
 
-
-## App Specific Requirements
-
-
-### Keys
-
+## How to run projects
+- install dependencies: npm i
+- run dev server: npm start
+- run tests: npm test
+- build project: npm build
 
 # React Create App
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
