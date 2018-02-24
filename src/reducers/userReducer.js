@@ -13,7 +13,10 @@ const user = (state = initalState, action) => {
 			return {...state, pending: false, error: false, user: action.payload.data.user};
 		case 'GET_ONE_USER_REJECTED':
 			message = (action.payload.message) ? action.payload.message : 'An error has occured. Please try again later.';
-			return {...state, pending: false, error: true, errorMessage: message };
+			return {...state, pending: false, error: true, errorMessage: message, user: null };
+
+		case 'USER_SEARCH_ERROR':
+			return {...state, error: true, errorMessage: action.message, user: null}
 
 		default:
 			return state;
