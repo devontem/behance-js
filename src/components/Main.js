@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import AppBar from 'material-ui/AppBar';
+import PropTypes from 'prop-types';
 
 import Search from './Search';
 import UserPage from './UserPage';
@@ -24,17 +25,38 @@ class Main extends Component {
 					title={app_name}
 				/>
 				<div style={styles.root}>
-					<Search {...this.props} />
+					<Search
+						search={this.props.search} 
+						getOneUser={this.props.getOneUser}
+						userSearchError={this.props.userSearchError}
+						searchUsers={this.props.searchUsers}
+					/>
 
 					{ (this.props.user.error) ?
 						(<p style={styles.center}>{this.props.user.errorMessage}</p>) : '' }
 
 					{ (this.props.user.user) ?
-						<UserPage {...this.props} /> : '' }
+						<UserPage 
+							user={this.props.user.user}
+						/> : '' }
 				</div>
 			</div>
 		);
 	}
 }
+
+Main.propTypes = {
+	user: PropTypes.shape({
+		user: PropTypes.object,
+		error: PropTypes.bool,
+		errorMessage: PropTypes.string
+	}),
+	search: PropTypes.shape({
+		users: PropTypes.array
+	}),
+	getOneUser: PropTypes.func.isRequired,
+	searchUsers: PropTypes.func.isRequired,
+	userSearchError: PropTypes.func.isRequired
+};
 
 export default Main;
