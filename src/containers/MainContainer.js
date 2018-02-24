@@ -24,6 +24,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 				payload: axios.get('/user.json'),
 				id: id
 			});
+		},
+		userSearchError: function(message){
+			dispatch({
+				type: 'USER_SEARCH_ERROR',
+				message: message
+			});
 		}
 	}
 };
