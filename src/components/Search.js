@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import AutoComplete from 'material-ui/AutoComplete';
 import Card, { CardText } from 'material-ui/Card';
+import PropTypes from 'prop-types';
 
 const dataSourceConfig = {
 	text: 'username',
@@ -45,6 +46,14 @@ class Search extends Component {
 			</Card>
 		);
 	}
-}
+};
+
+Search.propTypes = {
+	search: PropTypes.shape({
+		users: PropTypes.array.isRequired
+	}).isRequired,
+	getOneUser: PropTypes.func.isRequired,
+	userSearchError: PropTypes.func.isRequired
+};
 
 export default Search;
