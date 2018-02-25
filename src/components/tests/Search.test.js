@@ -19,7 +19,11 @@ let props = {
 	},
 	getOneUser: ()=>{},
 	searchUsers: ()=>{},
-	userSearchError: ()=>{}
+	userSearchError: ()=>{},
+  getUserProjects: ()=>{},
+  getUserExperience: ()=>{},
+  getUserFollowing: ()=>{},
+  getUserFollowers: ()=>{}
 }
 describe('Search Component', function () {
   it('Component should be built without errors', function () {
@@ -51,22 +55,10 @@ describe('Search Component', function () {
     expect(wrapper.instance().props.userSearchError).to.exist;
   });
 
-  // it('handleUpdateInput should call this.props.searchUsers', function () {
-  //   const wrapper = shallow(<Search {...props}/>);
-  //   console.log(wrapper.instance().props)
-  //   var spy = sinon.spy(wrapper.instance().props, 'searchUsers');
+  it('AutoComplete component should update state with new values', function () {
+    const wrapper = shallow(<Search {...props}/>);
 
-  //   // wrapper.instance().handleUpdateInput();
-  //   expect(spy.called).to.equal(true);
-  // });
-
-  // it('onNewRequest should call this.props.getOneUser on success', function () {
-  //   const wrapper = shallow(<Search {...props}/>);
-  //   expect(wrapper.find('Card').length).to.equal(1);
-  // });
-
-  // it('onNewRequest should call this.props.userSearchError on failure', function () {
-  //   const wrapper = shallow(<Search {...props}/>);
-  //   expect(wrapper.find('Card').length).to.equal(1);
-  // });
+    wrapper.instance().handleUpdateInput('test');
+    expect(wrapper.instance().state.value).to.equal('test');
+  });
 });
