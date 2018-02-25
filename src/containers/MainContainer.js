@@ -6,7 +6,7 @@ import Main from "./../components/Main.js";
 
 const HOST = 'https://api.behance.net/v2';
 const PROXY = 'https://cors-anywhere.herokuapp.com';
-const CLIENT_ID = ''; // required! - must replace with valid app_key
+const CLIENT_ID = ''; 
 const API_SUFFIX = `client_id=${CLIENT_ID}`;
 const API_URLS = {
 	USERS: `${PROXY}/${HOST}/users/`
