@@ -53,14 +53,34 @@ Main.propTypes = {
 	user: PropTypes.shape({
 		user: PropTypes.object,
 		error: PropTypes.bool,
-		errorMessage: PropTypes.string
+		errorMessage: PropTypes.string,
+		experience: PropTypes.oneOfType([
+    		PropTypes.array,
+    		PropTypes.object
+  		]),
+		followers: PropTypes.oneOfType([
+    		PropTypes.array,
+    		PropTypes.object
+  		]),
+		following: PropTypes.oneOfType([
+    		PropTypes.array,
+    		PropTypes.object
+  		]),
+		projects: PropTypes.oneOfType([
+    		PropTypes.array,
+    		PropTypes.object
+ 		 ])
 	}),
 	search: PropTypes.shape({
 		users: PropTypes.array
 	}),
 	getOneUser: PropTypes.func.isRequired,
 	searchUsers: PropTypes.func.isRequired,
-	userSearchError: PropTypes.func.isRequired
+	userSearchError: PropTypes.func.isRequired,
+	getUserProjects: PropTypes.func.isRequired,
+	getUserExperience: PropTypes.func.isRequired,
+	getUserFollowing: PropTypes.func.isRequired,
+	getUserFollowers: PropTypes.func.isRequired
 };
 
 export default Main;
