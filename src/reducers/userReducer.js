@@ -1,6 +1,10 @@
 let message;
 const initalState = {
-	user: null
+	user: null,
+	following: null,
+	followers: null,
+	experience: null,
+	projects: null
 };
 
 const user = (state = initalState, action) => {
