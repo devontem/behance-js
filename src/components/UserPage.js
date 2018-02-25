@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Card, CardHeader, CardText} from 'material-ui/Card';
 import PropTypes from 'prop-types';
 
+import List from './List';
+
 const styles = {
 	bold: {
 		fontWeight: 'bold'
@@ -10,7 +12,9 @@ const styles = {
 
 class UserPage extends Component {
 	render(){
-		const { user } = this.props;
+		const userObject = this.props.user;
+		const { user, following, followers, experience, projects } = userObject;
+
 		return (
 			<Card>
 				<CardHeader
@@ -19,25 +23,61 @@ class UserPage extends Component {
 					avatar={(user.images || {})[50]}
 				/>
 				<CardText>
-					<div>
-						<h3 style={styles.bold}>Occupation</h3>
-						<p>{user.occupation}</p>
-					</div>
-					<div>
-						<h3 style={styles.bold}>Fields</h3>
-						<p>{ (user.fields || []).join(', ') }</p>
-					</div>
-					<div>
-						<h3 style={styles.bold}>Experience</h3>
-						<ul>{ (user.links || []).map((item, i)=>{
-								return (<li key={i}><a target="_blank" href={item.url}>{item.title}</a></li>);
-							})}
-						</ul>
-					</div>
-					<div>
-						<h3 style={styles.bold}>Where, When and What</h3>
-						<p>{(user.sections || {})['Where, When and What']}</p>
-					</div>
+					{ (user.fields) ?
+						(<div>
+							<h3 style={styles.bold}>Fields</h3>
+							<p>{ (user.fields || []).join(', ') }</p>
+						</div>) : '' }
+
+					{ (user.occupation) ?
+						(<div>
+							<h3 style={styles.bold}>Occupation</h3>
+							<p>{user.occupation}</p>
+						</div>) : '' }
+
+					{ (user.stats) ?
+						<List
+							data={user.stats}
+							isArray={false}
+							oneField={false}
+						/> : '' }
+
+					{ (experience && experience.length) ?
+						<List
+							data={experience}
+							isArray={true}
+							title={'Experience'}
+							oneField={true}
+							valueKey='position'
+							valueKey2='organization'
+						/> : '' }
+
+					{ (projects && projects.length) ?
+						<List
+							data={projects}
+							title={'Projects'}
+							isArray={true}
+							oneField={true}
+							valueKey='name'
+						/> : '' }
+
+					{ (following && following.length) ?
+						<List
+							data={following}
+							isArray={true}
+							title={'Following'}
+							oneField={true}
+							valueKey='username'
+						/> : '' }
+
+					{ (followers && followers.length) ?
+						<List
+							data={followers}
+							isArray={true}
+							title={'Followers'}
+							oneField={true}
+							valueKey='username'
+						/> : '' }
 				</CardText>
 			</Card>
 		);
@@ -50,9 +90,6 @@ UserPage.propTypes = {
 		occupation: PropTypes.string.isRequired,
 		images: PropTypes.object.isRequired,
 		fields: PropTypes.array.isRequired,
-		sections: PropTypes.shape({
-			'Where, When and What': PropTypes.string.isRequired
-		}).isRequired,
 		links: PropTypes.array.isRequired
 	})
 };
