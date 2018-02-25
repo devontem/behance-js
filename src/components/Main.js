@@ -30,6 +30,10 @@ class Main extends Component {
 						getOneUser={this.props.getOneUser}
 						userSearchError={this.props.userSearchError}
 						searchUsers={this.props.searchUsers}
+						getUserProjects={this.props.getUserProjects}
+						getUserExperience={this.props.getUserExperience}
+						getUserFollowing={this.props.getUserFollowing}
+						getUserFollowers={this.props.getUserFollowers}
 					/>
 
 					{ (this.props.user.error) ?
@@ -37,7 +41,7 @@ class Main extends Component {
 
 					{ (this.props.user.user) ?
 						<UserPage 
-							user={this.props.user.user}
+							user={this.props.user}
 						/> : '' }
 				</div>
 			</div>
