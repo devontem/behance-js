@@ -1,13 +1,14 @@
 # behance-js
-- Look up and view basic information about Behance users
+- Simple tool to find and view information about Behance users 
 - Built with React & Redux
+- Uses the Behance Developer API
 
-## How to run projects
-- install dependencies: npm i
-- **IMPORTANT: in `src/containers/MainContainer` replace `CLIENT_ID` with behance app_key
-- run dev server: npm start
-- run tests: npm test
-- build project: npm build
+## How to Run
+- Install dependencies: npm i
+- *IMPORTANT:* in `src/containers/MainContainer` replace `CLIENT_ID` with Behance Developer app key
+- Run Dev Server: `npm start`
+- Run Tests: `npm test`
+- Build Project: `npm build`
 
 # React Create App
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
