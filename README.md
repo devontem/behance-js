@@ -7,7 +7,7 @@
 - Install dependencies: npm i
 - *IMPORTANT:* in `src/containers/MainContainer` replace `CLIENT_ID` with Behance Developer app key
 - Run Dev Server: `npm start`
-- Run Tests: `npm test`
+- Run Tests: `npm test a` - runs all tests
 - Build Project: `npm build`
 
 # React Create App
