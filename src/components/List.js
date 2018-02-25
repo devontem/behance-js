@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const styles = {
 	bold: {
@@ -24,7 +25,7 @@ const create_oneField_elements = (isArray, data_array, data, valueKey, valueKey2
 	} else {
 		return (<ul>
 					{ data_array.array.map(key => {
-						create_li_element(data[key], key, data[key].url);
+						return create_li_element(data[key], key, data[key].url);
 					}) }
 				</ul>);
 	}
@@ -64,5 +65,17 @@ const List = (props) => {
 		</div>
 	);
 }
+
+List.propTypes = {
+	title: PropTypes.node,
+	data: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object
+	]).isRequired,
+	isArray: PropTypes.bool.isRequired,
+	oneField: PropTypes.bool.isRequired,
+	valueKey: PropTypes.node,
+	valueKey2: PropTypes.node
+};
 
 export default List;
