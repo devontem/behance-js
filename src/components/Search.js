@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import AutoComplete from 'material-ui/AutoComplete';
 import Card, { CardText } from 'material-ui/Card';
 import PropTypes from 'prop-types';
+import _ from 'underscore';
 
 const dataSourceConfig = {
 	text: 'username',
@@ -15,14 +16,28 @@ const style = {
 };
 
 class Search extends Component {
+	constructor(){
+		super(...arguments);
+		this.state = {
+			value: ''
+		}
+	}	
+
+	_debounce = _.debounce(this.searchUsers, 1300);
+
 	handleUpdateInput(value){
-		this.props.searchUsers(value);
+		this.setState({value: value});
+		this._debounce(this._debounce, 1500);
+	}
+
+	searchUsers(){
+		this.props.searchUsers(this.state.value);
 	}
 
 	onNewRequest(node){
 		// handle select from autocomplete
-		if (node && node.id){
-			this.props.getOneUser(node.id);
+		if (node && node.username){
+			this.props.getOneUser(node.username);
 		} else {
 			this.props.userSearchError('No users were found matching this criteria.');
 		}
