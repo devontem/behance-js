@@ -48,7 +48,6 @@ class Search extends Component {
 			<Card style={style.root}>
 				<CardText>
 					<AutoComplete
-						ref="search"
 						hintText="type in username"
 						dataSource={this.props.search.users}
 						onUpdateInput={this.handleUpdateInput.bind(this)}
