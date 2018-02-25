@@ -86,12 +86,16 @@ class UserPage extends Component {
 
 UserPage.propTypes = {
 	user: PropTypes.shape({
-		username: PropTypes.string.isRequired,
-		occupation: PropTypes.string.isRequired,
-		images: PropTypes.object.isRequired,
-		fields: PropTypes.array.isRequired,
-		links: PropTypes.array.isRequired
-	})
+		username: PropTypes.string,
+		occupation: PropTypes.string,
+		images: PropTypes.object,
+		fields: PropTypes.array,
+		links: PropTypes.array
+	}),
+	experience: PropTypes.node,
+	followers: PropTypes.node,
+	following: PropTypes.node,
+	projects: PropTypes.node
 };
 
 export default UserPage;
