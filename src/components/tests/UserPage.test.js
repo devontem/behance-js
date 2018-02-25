@@ -61,7 +61,6 @@ describe('UserPage Component', function () {
 
   it('should have proper values within CardHeader', function () {
     const wrapper = shallow(<UserPage user={props.user} />);
-    console.log(wrapper.find('CardHeader').props().title)
     const CardHeader = wrapper.find('CardHeader').props();
     expect(CardHeader.title).to.equal('@dave');
     expect(CardHeader.subtitle).to.equal('Dave Mack - Brooklyn, United States');
