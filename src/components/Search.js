@@ -23,7 +23,7 @@ class Search extends Component {
 		}
 	}	
 
-	_debounce = _.debounce(this.searchUsers, 1300);
+	_debounce = _.debounce(this.searchUsers, 800);
 
 	handleUpdateInput(value){
 		this.setState({value: value});
