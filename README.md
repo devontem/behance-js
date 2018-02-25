@@ -4,6 +4,7 @@
 
 ## How to run projects
 - install dependencies: npm i
+- **IMPORTANT: in `src/containers/MainContainer` replace `CLIENT_ID` with behance app_key
 - run dev server: npm start
 - run tests: npm test
 - build project: npm build
