@@ -27,7 +27,7 @@ class Search extends Component {
 
 	handleUpdateInput(value){
 		this.setState({value: value});
-		this._debounce(this._debounce, 1500);
+		this._debounce();
 	}
 
 	searchUsers(){
@@ -67,7 +67,12 @@ Search.propTypes = {
 		users: PropTypes.array.isRequired
 	}).isRequired,
 	getOneUser: PropTypes.func.isRequired,
-	userSearchError: PropTypes.func.isRequired
+	userSearchError: PropTypes.func.isRequired,
+	searchUsers: PropTypes.func.isRequired,
+	getUserProjects: PropTypes.func.isRequired,
+	getUserExperience: PropTypes.func.isRequired,
+	getUserFollowing: PropTypes.func.isRequired,
+	getUserFollowers: PropTypes.func.isRequired
 };
 
 export default Search;
